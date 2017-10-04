@@ -67,6 +67,7 @@ ul li {
 	border: solid 1px rgba(88, 183, 205, .2);
 	border-bottom: solid 2px rgba(88, 183, 205, .2);
 	position: relative;
+	text-transform: uppercase;
 }
 
 button {

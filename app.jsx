@@ -20,7 +20,7 @@ class Model {
             return this.images[this.index];
       }
       addGuests(newGamer, index) {
-            if (this.inputValue.value != null || this.inputValue.value != '') {
+            if (this.inputValue.value != '') {
                   this.guests.push({
                         name: this.inputValue.value,
                         class: '',

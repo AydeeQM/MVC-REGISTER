@@ -210,7 +210,6 @@ div>label {
 	}
 	.main>div {
 		float: right;
-		display: inline-block;
 		margin-top: 12px;
 		margin-right: 1.25%;
 	}

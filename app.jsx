@@ -3,8 +3,9 @@ class Model {
             this.images = ["plane.svg"];
             this.index = 0;
             this.cont = 0;
-            checked: false;
+            //this.checked = false;
             this.guests = [];
+            this.inputValue = null;
             this.callback = null;
       }
 
@@ -22,6 +23,7 @@ class Model {
             if (this.inputValue.value != null || this.inputValue.value != '') {
                   this.guests.push({
                         name: this.inputValue.value,
+                        class: '',
                         id: this.cont + 1,
                         checked: false
                   });
@@ -34,20 +36,26 @@ class Model {
       removeGuests(option) {
             this.guests = this.guests.filter(item => item !== option);
             this.notify();
-         }
+      }
+
+      getCheked(e, index) {
+            this.guests[index].checked = (e.target.checked) ? true : false;
+            this.guests[index].class = (e.target.checked) ? 'responded' : '';
+            this.notify();
+      }
 }
 
-const TriviaApp = ({ title, model }) => {
+const RegisterGuest = ({ title, model }) => {
       let guestList = model.guests.map((option, index) => {
             return (
-            <li>
-              {option.name}
-              <label htmlFor="">
-                    {title}
-                    <input type="checkbox"/>
-              </label>
-              <button onClick={() => model.removeGuests(option)}>remove</button>
-            </li>
+                  <li key={index} className={option.class}>
+                        {option.name}
+                        <label htmlFor="">
+                              {title}
+                              <input type="checkbox" name={index} checked={option.checked} onChange={e => model.getCheked(e, index)}/>
+                        </label>
+                        <button onClick={() => model.removeGuests(option)}>remove</button>
+                  </li>
             )
       });
       return (
@@ -77,7 +85,7 @@ let counter = 1;
 let render = () => {
       console.log('render times: ', counter++);
       ReactDOM.render(
-            <TriviaApp title="Confirmed  " model={model} />,
+            <RegisterGuest title="Confirmed  " model={model} />,
             document.getElementById('container')
       );
 };

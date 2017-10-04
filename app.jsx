@@ -43,6 +43,7 @@ const TriviaApp = ({ title, model }) => {
             <li>
               {option.name}
               <label htmlFor="">
+                    {title}
                     <input type="checkbox"/>
               </label>
               <button onClick={() => model.removeGuests(option)}>remove</button>
@@ -50,7 +51,7 @@ const TriviaApp = ({ title, model }) => {
             )
       });
       return (
-            <div class="wrapper">
+            <div className="wrapper">
                   <header>
                         <h1>RSVP</h1>
                         <p> Registration App </p>
@@ -62,7 +63,7 @@ const TriviaApp = ({ title, model }) => {
                               <button type="submit" name="submit" value="submit">Submit</button>
                         </form>
                   </header>
-                  <div class="main">
+                  <div className="main">
                         <h2>Invitees</h2>
                         <ul>{guestList}</ul>
                   </div>
@@ -76,7 +77,7 @@ let counter = 1;
 let render = () => {
       console.log('render times: ', counter++);
       ReactDOM.render(
-            <TriviaApp title="TodoApp" model={model} />,
+            <TriviaApp title="Confirmed  " model={model} />,
             document.getElementById('container')
       );
 };
